@@ -1,0 +1,2 @@
+# Cloudflare Pages: fallback SPA. Los archivos estáticos existentes (assets, media) se sirven antes que esta regla.
+/*    /index.html   200

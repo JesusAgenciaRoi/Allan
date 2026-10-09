@@ -1,0 +1,60 @@
+/* AF Team — tokens de diseño. Estrategia de estilos: CSS global por capas
+   (tokens → base → componentes → landing → app) con nombres tipo BEM. Sin CSS-in-JS ni frameworks. */
+:root {
+  color-scheme: dark;
+
+  --c-black: #050505;
+  --c-ink: #0b0b0b;
+  --c-charcoal: #131313;
+  --c-charcoal-2: #1a1a1a;
+  --c-charcoal-3: #242424;
+  --c-line: rgba(255, 255, 255, 0.09);
+  --c-line-strong: rgba(255, 255, 255, 0.18);
+  --c-text: #f3f3f3;
+  --c-text-soft: #d6d6d6;
+  --c-muted: #a3a3a3;
+  --c-metal: #c3c6ca;
+  --c-gold: #c9a253;
+  --c-gold-light: #ddb76b;
+  --c-gold-dark: #9c7b37;
+  --c-gold-ink: #120e05;
+  --c-gold-soft: rgba(201, 162, 83, 0.14);
+  --c-danger: #ef5b5b;
+  --c-danger-soft: rgba(239, 91, 91, 0.14);
+  --c-warn: #f2a93b;
+  --c-warn-soft: rgba(242, 169, 59, 0.14);
+  --c-ok: #4cc27a;
+  --c-ok-soft: rgba(76, 194, 122, 0.14);
+  --c-info: #7fa7d9;
+
+  --f-display: 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
+  --f-condensed: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --f-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-s: 4px;
+  --radius: 8px;
+  --radius-l: 14px;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-gold: 0 8px 24px rgba(201, 162, 83, 0.22);
+
+  --header-h: 64px;
+  --gutter: 16px;
+  --max-w: 1240px;
+  --tap: 44px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 220ms;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 84px;
+    --gutter: 48px;
+  }
+}
