@@ -152,7 +152,9 @@ Cloudflare Pages solo sirve el frontend estático; la base de datos, la autentic
    - **Build output directory:** `dist`
    - **Variable `NODE_VERSION`:** `22` (o superior)
 3. Variables de entorno (Production y Preview): las de la tabla anterior. Sin ellas se despliega en modo demo.
-4. Guardar y desplegar. `public/_redirects` hace el fallback SPA (`/* /index.html 200`) sin afectar a los assets, y `public/_headers` añade cabeceras de seguridad y caché.
+4. Guardar y desplegar. El fallback SPA lo hace Cloudflare automáticamente (en Pages, al no existir `404.html`; en Workers, con `not_found_handling` de `wrangler.jsonc`). **No añadas un `_redirects` con `/* /index.html 200`**: Cloudflare lo rechaza por bucle infinito. `public/_headers` añade cabeceras de seguridad y caché.
+
+**Si el proyecto se creó como Worker** (deploy command `npx wrangler deploy`, como el proyecto `allan`): el repo ya incluye `wrangler.jsonc`, que ejecuta `npm run build` y publica `dist/` como assets estáticos. Las variables `VITE_*` deben definirse como **variables de build** (*Settings → Build → Variables and secrets*), porque Vite las incrusta al compilar; las variables de runtime del Worker no llegan al frontend.
 5. **Dominio propio:** *Custom domains → Set up a domain* y añade el CNAME que indica Cloudflare. Después actualiza `Site URL`/`Redirect URLs` en Supabase y `APP_URL` en la Edge Function.
 
 No se necesita ninguna Pages Function: la única lógica privilegiada (invitar usuarios) vive en la Edge Function de Supabase.
